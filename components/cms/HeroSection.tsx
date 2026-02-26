@@ -86,7 +86,7 @@ export function HeroSection({ banners }: HeroSectionProps) {
                   {banner.headline}
                 </h1>
                 <p className={`mt-4 text-lg md:text-xl ${
-                  isLightText ? 'text-white/90' : 'text-brown-light'
+                  isLightText ? 'text-white/90' : 'text-muted'
                 }`}>
                   {banner.subtext}
                 </p>
@@ -160,18 +160,18 @@ export function HeroSection({ banners }: HeroSectionProps) {
 // Fallback hero when no banners are configured
 function FallbackHero() {
   return (
-    <section className="relative bg-cream overflow-hidden">
+    <section className="relative bg-surface overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="text-center max-w-2xl mx-auto">
           <span className="inline-block px-4 py-1 bg-accent/10 text-accent text-sm font-semibold rounded-full mb-4">
             Welcome to NutriBites
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-primary leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-primary leading-tight uppercase tracking-wide">
             Healthy Never Tasted
             <br />
             <span className="text-accent">This Good</span>
           </h1>
-          <p className="mt-4 text-lg text-brown-light">
+          <p className="mt-4 text-lg text-muted">
             100% Natural Ingredients | No Preservatives | No Added Sugar
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">

@@ -34,14 +34,14 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
   };
 
   return (
-    <section className="py-16 bg-cream">
+    <section className="py-16 bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading text-primary">
+          <h2 className="text-2xl md:text-3xl font-bold font-heading text-primary uppercase tracking-wide">
             What Our Customers Say
           </h2>
-          <p className="mt-2 text-brown-light">
+          <p className="mt-2 text-muted">
             Join 50,000+ happy snackers
           </p>
         </div>
@@ -101,7 +101,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm">
+    <div className="bg-white rounded-lg p-6 border border-border hover:border-accent transition-colors">
       {/* Quote Icon */}
       <Quote className="h-8 w-8 text-accent/30 mb-4" />
 
@@ -118,7 +118,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
             className={`h-5 w-5 ${
               i < testimonial.rating
                 ? 'text-accent fill-accent'
-                : 'text-gray-300'
+                : 'text-border'
             }`}
           />
         ))}
@@ -126,14 +126,14 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
       {/* Customer Info */}
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-          <span className="text-primary font-semibold">
+        <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+          <span className="text-accent font-semibold">
             {testimonial.customerName.charAt(0)}
           </span>
         </div>
         <div>
           <p className="font-semibold text-primary">{testimonial.customerName}</p>
-          <p className="text-sm text-brown-light">{testimonial.location}</p>
+          <p className="text-sm text-muted">{testimonial.location}</p>
         </div>
       </div>
     </div>

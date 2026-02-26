@@ -15,12 +15,12 @@ export default function CollectionsPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Page Header */}
-      <div className="bg-cream py-12">
+      <div className="bg-surface py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl font-bold font-heading text-primary">
+          <h1 className="text-3xl md:text-4xl font-bold font-heading text-primary uppercase tracking-wide">
             Our Collections
           </h1>
-          <p className="mt-2 text-brown-light">
+          <p className="mt-2 text-muted">
             Explore our curated range of healthy, delicious snacks
           </p>
         </div>
@@ -33,7 +33,7 @@ export default function CollectionsPage() {
             <Link
               key={collection.id}
               href={`/collections/${collection.handle}`}
-              className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-cream"
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-surface"
             >
               {/* Background Image */}
               {collection.image && (

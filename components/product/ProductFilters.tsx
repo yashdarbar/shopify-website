@@ -79,7 +79,7 @@ export function ProductFilters({
         <select
           value={currentSort}
           onChange={(e) => updateFilters({ sort: e.target.value })}
-          className="w-full px-3 py-2 border border-brown-light/30 rounded-lg bg-white text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+          className="w-full px-3 py-2 border border-border rounded-lg bg-white text-primary focus:outline-none focus:ring-2 focus:ring-primary"
         >
           {SORT_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
@@ -100,7 +100,7 @@ export function ProductFilters({
               className={`block w-full text-left px-3 py-2 rounded-lg transition-colors ${
                 currentTag === tag.value
                   ? 'bg-primary text-white'
-                  : 'text-primary hover:bg-cream'
+                  : 'text-primary hover:bg-surface'
               }`}
             >
               {tag.label}
@@ -125,7 +125,7 @@ export function ProductFilters({
                 className={`block w-full text-left px-3 py-2 rounded-lg transition-colors ${
                   isActive
                     ? 'bg-primary text-white'
-                    : 'text-primary hover:bg-cream'
+                    : 'text-primary hover:bg-surface'
                 }`}
               >
                 {range.label}
@@ -187,7 +187,7 @@ export function ProductFilters({
                 </h2>
                 <button
                   onClick={() => setIsMobileOpen(false)}
-                  className="p-2 hover:bg-cream rounded-full transition-colors"
+                  className="p-2 hover:bg-surface rounded-full transition-colors"
                 >
                   <X className="h-5 w-5 text-primary" />
                 </button>

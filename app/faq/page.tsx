@@ -22,12 +22,12 @@ export default function FAQPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-cream py-12">
+      <div className="bg-surface py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold font-heading text-primary">
+          <h1 className="text-3xl md:text-4xl font-bold font-heading text-primary uppercase tracking-wide">
             Frequently Asked Questions
           </h1>
-          <p className="mt-2 text-brown-light max-w-2xl mx-auto">
+          <p className="mt-2 text-muted max-w-2xl mx-auto">
             Find quick answers to common questions about our products, shipping, and more.
           </p>
         </div>

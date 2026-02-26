@@ -109,6 +109,9 @@ export interface ShopifyCart {
 export type Product = Omit<ShopifyProduct, 'images' | 'variants'> & {
   images: ShopifyImage[];
   variants: ShopifyProductVariant[];
+  rating?: number;        // Average rating (1-5)
+  reviewCount?: number;   // Number of reviews
+  mood?: string[];        // Mood categories for filtering
 };
 
 export type Collection = Omit<ShopifyCollection, 'products'> & {

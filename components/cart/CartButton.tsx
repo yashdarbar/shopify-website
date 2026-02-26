@@ -10,7 +10,7 @@ export function CartButton() {
   return (
     <button
       onClick={toggleCart}
-      className="relative flex items-center justify-center p-2 text-primary hover:text-primary-dark transition-colors"
+      className="relative flex items-center justify-center p-2 text-white/90 hover:text-accent transition-colors"
       aria-label={`Shopping cart with ${count} items`}
       disabled={isLoading}
     >

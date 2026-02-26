@@ -21,12 +21,12 @@ export async function CategoriesSection() {
   }
 
   return (
-    <section className="py-16 bg-cream/50">
+    <section className="py-16 bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-primary">Shop by Category</h2>
-          <p className="mt-2 text-brown-light">Browse our curated collections</p>
+          <p className="mt-2 text-muted">Browse our curated collections</p>
         </div>
 
         {/* Categories Grid */}

@@ -71,7 +71,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
           </span>
           {hasDiscount && (
             <>
-              <span className="text-xl text-brown-light line-through">
+              <span className="text-xl text-muted line-through">
                 {formatPrice(comparePrice.amount, comparePrice.currencyCode)}
               </span>
               <span className="px-2 py-1 bg-accent/10 text-accent text-sm font-semibold rounded">
@@ -92,7 +92,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
       </div>
 
       {/* Short Description */}
-      <p className="text-brown-light">{product.description}</p>
+      <p className="text-muted">{product.description}</p>
 
       {/* Variant Selector */}
       {hasVariants && (
@@ -127,11 +127,11 @@ export function ProductInfo({ product }: ProductInfoProps) {
           Quantity
         </label>
         <div className="flex items-center gap-4">
-          <div className="flex items-center border border-brown-light/30 rounded-lg">
+          <div className="flex items-center border border-border rounded-lg">
             <button
               onClick={() => handleQuantityChange(-1)}
               disabled={quantity <= 1}
-              className="p-3 hover:bg-cream rounded-l-lg disabled:opacity-50 transition-colors"
+              className="p-3 hover:bg-surface rounded-l-lg disabled:opacity-50 transition-colors"
             >
               <Minus className="h-4 w-4 text-primary" />
             </button>
@@ -141,12 +141,12 @@ export function ProductInfo({ product }: ProductInfoProps) {
             <button
               onClick={() => handleQuantityChange(1)}
               disabled={quantity >= 10}
-              className="p-3 hover:bg-cream rounded-r-lg disabled:opacity-50 transition-colors"
+              className="p-3 hover:bg-surface rounded-r-lg disabled:opacity-50 transition-colors"
             >
               <Plus className="h-4 w-4 text-primary" />
             </button>
           </div>
-          <span className="text-sm text-brown-light">
+          <span className="text-sm text-muted">
             Max 10 per order
           </span>
         </div>
@@ -164,13 +164,13 @@ export function ProductInfo({ product }: ProductInfoProps) {
           {isLoading ? 'Adding...' : 'Add to Cart'}
         </Button>
         <button
-          className="p-3 border border-brown-light/30 rounded-lg hover:bg-cream transition-colors"
+          className="p-3 border border-border rounded-lg hover:bg-surface transition-colors"
           aria-label="Add to wishlist"
         >
           <Heart className="h-6 w-6 text-primary" />
         </button>
         <button
-          className="p-3 border border-brown-light/30 rounded-lg hover:bg-cream transition-colors"
+          className="p-3 border border-border rounded-lg hover:bg-surface transition-colors"
           aria-label="Share product"
         >
           <Share2 className="h-6 w-6 text-primary" />
@@ -178,20 +178,20 @@ export function ProductInfo({ product }: ProductInfoProps) {
       </div>
 
       {/* Trust Badges */}
-      <div className="grid grid-cols-3 gap-4 pt-6 border-t border-cream">
+      <div className="grid grid-cols-3 gap-4 pt-6 border-t border-border">
         <div className="text-center">
-          <Truck className="h-6 w-6 mx-auto text-primary mb-2" />
-          <p className="text-xs text-brown-light">Free Shipping</p>
+          <Truck className="h-6 w-6 mx-auto text-accent mb-2" />
+          <p className="text-xs text-muted">Free Shipping</p>
           <p className="text-xs text-primary font-medium">Above Rs. 499</p>
         </div>
         <div className="text-center">
-          <Shield className="h-6 w-6 mx-auto text-primary mb-2" />
-          <p className="text-xs text-brown-light">100% Natural</p>
+          <Shield className="h-6 w-6 mx-auto text-accent mb-2" />
+          <p className="text-xs text-muted">100% Natural</p>
           <p className="text-xs text-primary font-medium">No Preservatives</p>
         </div>
         <div className="text-center">
-          <RotateCcw className="h-6 w-6 mx-auto text-primary mb-2" />
-          <p className="text-xs text-brown-light">Easy Returns</p>
+          <RotateCcw className="h-6 w-6 mx-auto text-accent mb-2" />
+          <p className="text-xs text-muted">Easy Returns</p>
           <p className="text-xs text-primary font-medium">7 Days Policy</p>
         </div>
       </div>

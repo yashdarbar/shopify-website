@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/Button';
 
 export function HeroSection() {
   return (
-    <section className="relative bg-cream overflow-hidden">
+    <section className="relative bg-surface overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Content */}
@@ -16,7 +16,7 @@ export function HeroSection() {
               <br />
               <span className="text-accent">Premium Products</span>
             </h1>
-            <p className="mt-4 text-lg text-brown-light max-w-md mx-auto md:mx-0">
+            <p className="mt-4 text-lg text-muted max-w-md mx-auto md:mx-0">
               Handcrafted with love and care. Experience the finest quality products
               made from natural ingredients.
             </p>
@@ -44,7 +44,7 @@ export function HeroSection() {
             <div className="relative z-10 h-full flex items-center justify-center">
               <div className="text-center">
                 <span className="text-6xl md:text-8xl">🛍️</span>
-                <p className="mt-2 text-sm text-brown-light">Add hero image here</p>
+                <p className="mt-2 text-sm text-muted">Add hero image here</p>
               </div>
             </div>
           </div>

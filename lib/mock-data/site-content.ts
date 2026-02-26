@@ -287,13 +287,66 @@ export const mockNewsletterSettings: NewsletterSettings = {
   successMessage: "Thanks for subscribing! Check your email for your discount code.",
 };
 
+// Mood category type
+export interface MoodCategory {
+  id: string;
+  name: string;
+  icon: string; // Lucide icon name
+  description: string;
+  slug: string;
+  color: string;
+}
+
 // Shop by Mood categories
-export const mockShopByMood = [
-  { name: 'Spicy', emoji: '🌶️', tag: 'Peri Peri' },
-  { name: 'Sweet', emoji: '🍯', tag: 'No Sugar' },
-  { name: 'Savory', emoji: '🧀', tag: 'Cheese' },
-  { name: 'Crunchy', emoji: '🥜', tag: 'Baked' },
-  { name: 'Healthy', emoji: '💪', tag: 'Protein' },
+export const mockMoodCategories: MoodCategory[] = [
+  {
+    id: 'energy',
+    name: 'Energy Boost',
+    icon: 'Zap',
+    description: 'Power through your day',
+    slug: 'energy',
+    color: '#F59E0B',
+  },
+  {
+    id: 'fitness',
+    name: 'Fitness Fuel',
+    icon: 'Dumbbell',
+    description: 'Pre & post workout snacks',
+    slug: 'fitness',
+    color: '#EF4444',
+  },
+  {
+    id: 'wellness',
+    name: 'Wellness',
+    icon: 'Heart',
+    description: 'Nourish your body',
+    slug: 'wellness',
+    color: '#EC4899',
+  },
+  {
+    id: 'party',
+    name: 'Party Time',
+    icon: 'PartyPopper',
+    description: 'Guilt-free party snacks',
+    slug: 'party',
+    color: '#8B5CF6',
+  },
+  {
+    id: 'work',
+    name: 'Work From Home',
+    icon: 'Laptop',
+    description: 'Desk-friendly munchies',
+    slug: 'work',
+    color: '#3B82F6',
+  },
+  {
+    id: 'kids',
+    name: 'Kids Favorites',
+    icon: 'Smile',
+    description: 'Healthy treats kids love',
+    slug: 'kids',
+    color: '#10B981',
+  },
 ];
 
 // Helper functions
@@ -333,4 +386,8 @@ export function getMockContactInfo(): ContactInfo {
 
 export function getMockNewsletterSettings(): NewsletterSettings {
   return mockNewsletterSettings;
+}
+
+export function getMockMoodCategories(): MoodCategory[] {
+  return mockMoodCategories;
 }

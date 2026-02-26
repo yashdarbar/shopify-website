@@ -14,12 +14,12 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-cream py-12">
+      <div className="bg-surface py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold font-heading text-primary">
+          <h1 className="text-3xl md:text-4xl font-bold font-heading text-primary uppercase tracking-wide">
             Get in Touch
           </h1>
-          <p className="mt-2 text-brown-light max-w-2xl mx-auto">
+          <p className="mt-2 text-muted max-w-2xl mx-auto">
             We'd love to hear from you! Whether you have a question, feedback, or just want to say hello.
           </p>
         </div>
@@ -44,7 +44,7 @@ export default function ContactPage() {
                   <p className="font-medium text-primary">Email</p>
                   <a
                     href={`mailto:${contactInfo.email}`}
-                    className="text-brown-light hover:text-accent transition-colors"
+                    className="text-muted hover:text-accent transition-colors"
                   >
                     {contactInfo.email}
                   </a>
@@ -60,7 +60,7 @@ export default function ContactPage() {
                   <p className="font-medium text-primary">Phone</p>
                   <a
                     href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
-                    className="text-brown-light hover:text-accent transition-colors"
+                    className="text-muted hover:text-accent transition-colors"
                   >
                     {contactInfo.phone}
                   </a>
@@ -78,7 +78,7 @@ export default function ContactPage() {
                     href={`https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-brown-light hover:text-green-600 transition-colors"
+                    className="text-muted hover:text-green-600 transition-colors"
                   >
                     {contactInfo.whatsapp}
                   </a>
@@ -92,7 +92,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="font-medium text-primary">Address</p>
-                  <p className="text-brown-light">
+                  <p className="text-muted">
                     {contactInfo.addressLine1}
                     <br />
                     {contactInfo.addressLine2}
@@ -107,7 +107,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="font-medium text-primary">Business Hours</p>
-                  <p className="text-brown-light whitespace-pre-line">
+                  <p className="text-muted whitespace-pre-line">
                     {contactInfo.businessHours}
                   </p>
                 </div>
@@ -115,26 +115,26 @@ export default function ContactPage() {
             </div>
 
             {/* Quick Links */}
-            <div className="mt-10 p-6 bg-cream rounded-2xl">
+            <div className="mt-10 p-6 bg-surface rounded-2xl">
               <h3 className="font-semibold font-heading text-primary mb-4">
                 Quick Help
               </h3>
               <div className="space-y-2">
                 <a
                   href="/faq"
-                  className="block text-brown-light hover:text-accent transition-colors"
+                  className="block text-muted hover:text-accent transition-colors"
                 >
                   → Frequently Asked Questions
                 </a>
                 <a
                   href="/shipping"
-                  className="block text-brown-light hover:text-accent transition-colors"
+                  className="block text-muted hover:text-accent transition-colors"
                 >
                   → Shipping Information
                 </a>
                 <a
                   href="/returns"
-                  className="block text-brown-light hover:text-accent transition-colors"
+                  className="block text-muted hover:text-accent transition-colors"
                 >
                   → Returns & Refunds
                 </a>

@@ -93,7 +93,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
         ) : (
           <div className="text-center py-16">
             <p className="text-primary font-medium mb-2">No products in this collection</p>
-            <p className="text-brown-light text-sm">
+            <p className="text-muted text-sm">
               Check back soon for new additions
             </p>
             <Link

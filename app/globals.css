@@ -1,22 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  /* NutriBites Brand Colors */
+  /* NutriBites Brand Colors - Snackible-Inspired Modern Theme */
   --background: #FFFFFF;
-  --foreground: #333333;
-  --primary: #2D5A4A;          /* Deep Forest Green */
-  --primary-dark: #1e3d32;     /* Darker green for hover */
-  --primary-light: #3d7a64;    /* Lighter green */
-  --accent: #E87B35;           /* Warm Orange */
-  --accent-light: #f59e5c;     /* Lighter orange for hover */
-  --cream: #F5E6D3;            /* Cream/Beige */
-  --cream-light: #faf3eb;      /* Lighter cream */
-  --brown-light: #8b7355;      /* Muted brown for secondary text */
+  --foreground: #1A1A1A;
+
+  /* Primary - Black */
+  --primary: #000000;
+  --primary-dark: #1A1A1A;
+  --primary-light: #333333;
+
+  /* Accent - Teal */
+  --accent: #3ABCA2;
+  --accent-dark: #2D9E87;
+  --accent-light: #4FD4BE;
+
+  /* Neutrals */
+  --surface: #F8F8F8;
+  --cream: #F5F5F5;
+  --cream-light: #FAFAFA;
+  --border: #E5E5E5;
+  --muted: #666666;
+  --brown-light: #888888;      /* Kept for compatibility */
 
   /* Scheme colors for sections */
-  --scheme-dark-bg: #2D5A4A;
+  --scheme-dark-bg: #000000;
   --scheme-dark-text: #FFFFFF;
-  --scheme-accent-bg: #F5E6D3;
+  --scheme-accent-bg: #F5F5F5;
+
+  /* Semantic colors */
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
 }
 
 @theme inline {
@@ -26,10 +41,17 @@
   --color-primary-dark: var(--primary-dark);
   --color-primary-light: var(--primary-light);
   --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
   --color-accent-light: var(--accent-light);
+  --color-surface: var(--surface);
   --color-cream: var(--cream);
   --color-cream-light: var(--cream-light);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
   --color-brown-light: var(--brown-light);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
   --font-sans: var(--font-body);
   --font-heading: var(--font-heading);
 }
@@ -47,16 +69,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--cream);
+  background: var(--surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--brown-light);
+  background: var(--border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  background: var(--accent);
 }
 
 /* Marquee animation */

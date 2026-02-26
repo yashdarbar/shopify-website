@@ -62,11 +62,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Breadcrumb */}
-      <div className="bg-cream/50 py-4">
+      <div className="bg-surface py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/products"
-            className="flex items-center gap-2 text-brown-light hover:text-primary transition-colors text-sm"
+            className="flex items-center gap-2 text-muted hover:text-primary transition-colors text-sm"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Products
@@ -80,7 +80,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {/* Product Images */}
           <div className="space-y-4">
             {/* Main Image */}
-            <div className="relative aspect-square bg-cream rounded-2xl overflow-hidden">
+            <div className="relative aspect-square bg-surface rounded-2xl overflow-hidden">
               {product.featuredImage ? (
                 <Image
                   src={product.featuredImage.url}
@@ -90,7 +90,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   priority
                 />
               ) : (
-                <div className="h-full w-full flex items-center justify-center text-brown-light">
+                <div className="h-full w-full flex items-center justify-center text-muted">
                   No image available
                 </div>
               )}
@@ -109,7 +109,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 {product.images.map((image, index) => (
                   <div
                     key={index}
-                    className="relative w-20 h-20 flex-shrink-0 bg-cream rounded-lg overflow-hidden border-2 border-transparent hover:border-primary transition-colors cursor-pointer"
+                    className="relative w-20 h-20 flex-shrink-0 bg-surface rounded-lg overflow-hidden border-2 border-transparent hover:border-primary transition-colors cursor-pointer"
                   >
                     <Image
                       src={image.url}
@@ -128,12 +128,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
 
         {/* Product Description */}
-        <div className="mt-12 pt-8 border-t border-cream">
+        <div className="mt-12 pt-8 border-t border-border">
           <h2 className="text-2xl font-bold font-heading text-primary mb-4">
             Product Details
           </h2>
           <div
-            className="prose prose-primary max-w-none text-brown-light"
+            className="prose prose-primary max-w-none text-muted"
             dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
           />
 
@@ -144,7 +144,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <Link
                   key={tag}
                   href={`/products?tag=${encodeURIComponent(tag)}`}
-                  className="px-3 py-1 bg-cream text-primary text-sm rounded-full hover:bg-primary hover:text-white transition-colors"
+                  className="px-3 py-1 bg-surface text-primary text-sm rounded-full hover:bg-accent hover:text-white transition-colors"
                 >
                   {tag}
                 </Link>
@@ -155,7 +155,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
-          <div className="mt-16 pt-8 border-t border-cream">
+          <div className="mt-16 pt-8 border-t border-border">
             <h2 className="text-2xl font-bold font-heading text-primary mb-8">
               You Might Also Like
             </h2>

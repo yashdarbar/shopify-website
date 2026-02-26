@@ -20,11 +20,11 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
       {items.map((item, index) => (
         <div
           key={item.id}
-          className="border border-brown-light/20 rounded-xl overflow-hidden"
+          className="border border-border rounded-xl overflow-hidden"
         >
           <button
             onClick={() => toggleItem(index)}
-            className="w-full flex items-center justify-between p-5 text-left bg-white hover:bg-cream/50 transition-colors"
+            className="w-full flex items-center justify-between p-5 text-left bg-white hover:bg-surface transition-colors"
           >
             <span className="font-medium text-primary pr-4">{item.question}</span>
             <ChevronDown
@@ -38,7 +38,7 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
               openIndex === index ? 'max-h-96' : 'max-h-0'
             }`}
           >
-            <div className="p-5 pt-0 text-brown-light leading-relaxed">
+            <div className="p-5 pt-0 text-muted leading-relaxed">
               {item.answer}
             </div>
           </div>

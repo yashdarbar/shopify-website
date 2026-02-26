@@ -69,7 +69,7 @@ export function ContactForm() {
           required
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-brown-light/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+          className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
           placeholder="Enter your name"
         />
       </div>
@@ -86,7 +86,7 @@ export function ContactForm() {
           required
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-brown-light/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+          className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
           placeholder="your@email.com"
         />
       </div>
@@ -102,7 +102,7 @@ export function ContactForm() {
           required
           value={formData.subject}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-brown-light/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-white"
+          className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-white"
         >
           <option value="">Select a subject</option>
           <option value="order">Order Related Query</option>
@@ -126,7 +126,7 @@ export function ContactForm() {
           rows={5}
           value={formData.message}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-brown-light/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none"
+          className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none"
           placeholder="How can we help you?"
         />
       </div>
@@ -143,7 +143,7 @@ export function ContactForm() {
         )}
       </Button>
 
-      <p className="text-sm text-brown-light text-center">
+      <p className="text-sm text-muted text-center">
         We typically respond within 24 hours
       </p>
     </form>

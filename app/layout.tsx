@@ -1,20 +1,22 @@
 import type { Metadata } from 'next';
-import { Montserrat, Open_Sans } from 'next/font/google';
+import { Oswald, Inter } from 'next/font/google';
 import './globals.css';
 import { Providers } from '@/components/Providers';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { MobileBottomNav } from '@/components/layout/MobileBottomNav';
 import { CartDrawer } from '@/components/cart/CartDrawer';
+import { QuickViewModal } from '@/components/product/QuickViewModal';
 import { AnnouncementBar } from '@/components/cms/AnnouncementBar';
 
-const montserrat = Montserrat({
+const oswald = Oswald({
   variable: '--font-heading',
   subsets: ['latin'],
-  weight: ['600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
 
-const openSans = Open_Sans({
+const inter = Inter({
   variable: '--font-body',
   subsets: ['latin'],
   weight: ['400', '500', '600'],
@@ -35,16 +37,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} ${openSans.variable} antialiased font-sans`}
+        className={`${oswald.variable} ${inter.variable} antialiased font-sans`}
       >
         <Providers>
           <div className="flex min-h-screen flex-col">
             <AnnouncementBar />
             <Header />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 pb-16 lg:pb-0">{children}</main>
             <Footer />
           </div>
+          <MobileBottomNav />
           <CartDrawer />
+          <QuickViewModal />
         </Providers>
       </body>
     </html>

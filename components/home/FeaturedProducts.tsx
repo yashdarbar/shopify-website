@@ -24,10 +24,10 @@ export function FeaturedProducts({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary">{title}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold font-heading text-primary uppercase tracking-wide">{title}</h2>
           <Link
             href="/products"
-            className="flex items-center gap-2 text-accent hover:text-primary transition-colors font-medium"
+            className="flex items-center gap-2 text-accent hover:text-accent-dark transition-colors font-medium uppercase tracking-wider text-sm"
           >
             View All
             <ArrowRight className="h-4 w-4" />

@@ -63,15 +63,15 @@ export default function AboutPage() {
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="prose prose-lg prose-primary max-w-none">
-          <p className="text-xl text-brown-light leading-relaxed">
+          <p className="text-xl text-muted leading-relaxed">
             Founded in 2023, we started with a simple mission: create snacks that are as delicious as they are nutritious. Every product is crafted with <strong>100% natural ingredients</strong>, no preservatives, and no added sugar.
           </p>
 
-          <p className="text-brown-light">
+          <p className="text-muted">
             We understand the struggle of finding healthy snacks that actually taste good. That's why our team of food scientists and culinary experts work tirelessly to develop recipes that satisfy your cravings without compromising your health goals.
           </p>
 
-          <p className="text-brown-light">
+          <p className="text-muted">
             From protein-packed power balls for fitness enthusiasts to traditional Indian sweets reimagined with natural sweeteners, every NutriBites product is a labor of love. We source our ingredients from trusted Indian farms, ensuring freshness and supporting local communities.
           </p>
         </div>
@@ -80,25 +80,25 @@ export default function AboutPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 my-16 text-center">
           <div>
             <p className="text-4xl font-bold font-heading text-primary">50K+</p>
-            <p className="text-brown-light mt-1">Happy Customers</p>
+            <p className="text-muted mt-1">Happy Customers</p>
           </div>
           <div>
             <p className="text-4xl font-bold font-heading text-primary">15+</p>
-            <p className="text-brown-light mt-1">Products</p>
+            <p className="text-muted mt-1">Products</p>
           </div>
           <div>
             <p className="text-4xl font-bold font-heading text-primary">100%</p>
-            <p className="text-brown-light mt-1">Natural</p>
+            <p className="text-muted mt-1">Natural</p>
           </div>
           <div>
             <p className="text-4xl font-bold font-heading text-primary">0</p>
-            <p className="text-brown-light mt-1">Preservatives</p>
+            <p className="text-muted mt-1">Preservatives</p>
           </div>
         </div>
       </div>
 
       {/* Our Promise Section */}
-      <div className="bg-cream py-16">
+      <div className="bg-surface py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold font-heading text-primary text-center mb-12">
             Our Promise
@@ -112,7 +112,7 @@ export default function AboutPage() {
                 <h3 className="font-semibold font-heading text-primary mb-2">
                   {promise.title}
                 </h3>
-                <p className="text-brown-light text-sm">{promise.description}</p>
+                <p className="text-muted text-sm">{promise.description}</p>
               </div>
             ))}
           </div>

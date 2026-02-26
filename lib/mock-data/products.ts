@@ -31,6 +31,13 @@ function createMockImage(url: string, alt: string) {
   };
 }
 
+interface ProductOptions {
+  variants?: { title: string; price: string }[];
+  rating?: number;
+  reviewCount?: number;
+  mood?: string[];
+}
+
 function createMockProduct(
   id: string,
   handle: string,
@@ -40,8 +47,9 @@ function createMockProduct(
   compareAtPrice: string | null,
   imageUrl: string,
   tags: string[],
-  variants: { title: string; price: string }[] = [{ title: 'Default', price: priceAmount }]
+  options: ProductOptions = {}
 ): Product {
+  const variants = options.variants || [{ title: 'Default', price: priceAmount }];
   return {
     id: `gid://shopify/Product/${id}`,
     handle,
@@ -68,6 +76,9 @@ function createMockProduct(
     })),
     tags,
     updatedAt: new Date().toISOString(),
+    rating: options.rating ?? (4 + Math.random() * 0.9), // Random rating between 4.0-4.9
+    reviewCount: options.reviewCount ?? Math.floor(Math.random() * 200 + 20), // Random 20-220 reviews
+    mood: options.mood ?? [],
   };
 }
 
@@ -83,11 +94,16 @@ export const mockProducts: Product[] = [
     '499',
     PLACEHOLDER_IMAGES.proteinBalls,
     ['Protein', 'Post-Workout', 'No Sugar Added', 'Bestseller'],
-    [
-      { title: 'Chocolate', price: '399' },
-      { title: 'Peanut Butter', price: '399' },
-      { title: 'Mixed Berry', price: '399' },
-    ]
+    {
+      variants: [
+        { title: 'Chocolate', price: '399' },
+        { title: 'Peanut Butter', price: '399' },
+        { title: 'Mixed Berry', price: '399' },
+      ],
+      rating: 4.8,
+      reviewCount: 156,
+      mood: ['fitness', 'energy'],
+    }
   ),
   createMockProduct(
     '2',
@@ -98,11 +114,16 @@ export const mockProducts: Product[] = [
     null,
     PLACEHOLDER_IMAGES.makhana,
     ['Low Calorie', 'High Protein', 'Gluten-Free'],
-    [
-      { title: 'Peri Peri', price: '249' },
-      { title: 'Cheese', price: '249' },
-      { title: 'Classic Salt', price: '249' },
-    ]
+    {
+      variants: [
+        { title: 'Peri Peri', price: '249' },
+        { title: 'Cheese', price: '249' },
+        { title: 'Classic Salt', price: '249' },
+      ],
+      rating: 4.5,
+      reviewCount: 89,
+      mood: ['wellness', 'work'],
+    }
   ),
   createMockProduct(
     '3',
@@ -112,7 +133,12 @@ export const mockProducts: Product[] = [
     '299',
     null,
     PLACEHOLDER_IMAGES.chikki,
-    ['Traditional', 'Protein', 'No Preservatives']
+    ['Traditional', 'Protein', 'No Preservatives'],
+    {
+      rating: 4.6,
+      reviewCount: 72,
+      mood: ['energy', 'fitness'],
+    }
   ),
 
   // Category: Millet Munchies
@@ -124,7 +150,12 @@ export const mockProducts: Product[] = [
     '149',
     null,
     PLACEHOLDER_IMAGES.ragiChips,
-    ['Millet', 'Baked', 'Low Fat']
+    ['Millet', 'Baked', 'Low Fat'],
+    {
+      rating: 4.3,
+      reviewCount: 128,
+      mood: ['kids', 'party'],
+    }
   ),
   createMockProduct(
     '5',
@@ -135,12 +166,17 @@ export const mockProducts: Product[] = [
     null,
     PLACEHOLDER_IMAGES.jowarPuffs,
     ['Millet', 'Kids Favorite', 'No Maida'],
-    [
-      { title: 'Cheese', price: '199' },
-      { title: 'Herbs', price: '199' },
-      { title: 'Masala', price: '199' },
-      { title: 'Plain', price: '199' },
-    ]
+    {
+      variants: [
+        { title: 'Cheese', price: '199' },
+        { title: 'Herbs', price: '199' },
+        { title: 'Masala', price: '199' },
+        { title: 'Plain', price: '199' },
+      ],
+      rating: 4.7,
+      reviewCount: 203,
+      mood: ['kids', 'party'],
+    }
   ),
   createMockProduct(
     '6',
@@ -150,7 +186,12 @@ export const mockProducts: Product[] = [
     '249',
     null,
     PLACEHOLDER_IMAGES.milletCookies,
-    ['Millet', 'Jaggery', 'Eggless']
+    ['Millet', 'Jaggery', 'Eggless'],
+    {
+      rating: 4.4,
+      reviewCount: 95,
+      mood: ['kids', 'work'],
+    }
   ),
 
   // Category: Guilt-Free Sweets
@@ -162,7 +203,12 @@ export const mockProducts: Product[] = [
     '349',
     null,
     PLACEHOLDER_IMAGES.dateLaddoo,
-    ['No Sugar', 'Traditional', 'Gift-Ready', 'Bestseller']
+    ['No Sugar', 'Traditional', 'Gift-Ready', 'Bestseller'],
+    {
+      rating: 4.9,
+      reviewCount: 178,
+      mood: ['wellness', 'party'],
+    }
   ),
   createMockProduct(
     '8',
@@ -172,7 +218,12 @@ export const mockProducts: Product[] = [
     '449',
     null,
     PLACEHOLDER_IMAGES.dryFruitBarfi,
-    ['Premium', 'No Sugar', 'Festive Special']
+    ['Premium', 'No Sugar', 'Festive Special'],
+    {
+      rating: 4.7,
+      reviewCount: 64,
+      mood: ['party', 'wellness'],
+    }
   ),
   createMockProduct(
     '9',
@@ -182,7 +233,12 @@ export const mockProducts: Product[] = [
     '299',
     null,
     PLACEHOLDER_IMAGES.coconutBalls,
-    ['Vegan', 'Gluten-Free', 'No Dairy']
+    ['Vegan', 'Gluten-Free', 'No Dairy'],
+    {
+      rating: 4.5,
+      reviewCount: 52,
+      mood: ['wellness'],
+    }
   ),
 
   // Category: Crunchy Namkeen
@@ -194,7 +250,12 @@ export const mockProducts: Product[] = [
     '179',
     null,
     PLACEHOLDER_IMAGES.bakedBhujia,
-    ['Baked', 'Traditional', 'Less Oil']
+    ['Baked', 'Traditional', 'Less Oil'],
+    {
+      rating: 4.2,
+      reviewCount: 87,
+      mood: ['party', 'work'],
+    }
   ),
   createMockProduct(
     '11',
@@ -204,7 +265,12 @@ export const mockProducts: Product[] = [
     '199',
     null,
     PLACEHOLDER_IMAGES.quinoaChakli,
-    ['Quinoa', 'Baked', 'High Fiber']
+    ['Quinoa', 'Baked', 'High Fiber'],
+    {
+      rating: 4.4,
+      reviewCount: 45,
+      mood: ['wellness', 'party'],
+    }
   ),
   createMockProduct(
     '12',
@@ -214,7 +280,12 @@ export const mockProducts: Product[] = [
     '399',
     null,
     PLACEHOLDER_IMAGES.trailMix,
-    ['Premium', 'No Salt', 'Energy Boost']
+    ['Premium', 'No Salt', 'Energy Boost'],
+    {
+      rating: 4.8,
+      reviewCount: 134,
+      mood: ['energy', 'work', 'fitness'],
+    }
   ),
 
   // Category: Gift Hampers
@@ -226,7 +297,12 @@ export const mockProducts: Product[] = [
     '799',
     '999',
     PLACEHOLDER_IMAGES.starterBox,
-    ['Gift', 'Value Pack', 'Bestseller']
+    ['Gift', 'Value Pack', 'Bestseller'],
+    {
+      rating: 4.9,
+      reviewCount: 212,
+      mood: ['party'],
+    }
   ),
   createMockProduct(
     '14',
@@ -236,7 +312,12 @@ export const mockProducts: Product[] = [
     '1499',
     '1899',
     PLACEHOLDER_IMAGES.giftHamper,
-    ['Premium Gift', 'Festival', 'Corporate']
+    ['Premium Gift', 'Festival', 'Corporate'],
+    {
+      rating: 4.8,
+      reviewCount: 76,
+      mood: ['party'],
+    }
   ),
   createMockProduct(
     '15',
@@ -246,7 +327,12 @@ export const mockProducts: Product[] = [
     '999',
     null,
     PLACEHOLDER_IMAGES.proteinBundle,
-    ['Protein', 'Fitness', 'Bundle']
+    ['Protein', 'Fitness', 'Bundle'],
+    {
+      rating: 4.7,
+      reviewCount: 98,
+      mood: ['fitness', 'energy'],
+    }
   ),
 ];
 
@@ -278,4 +364,8 @@ export function searchMockProducts(query: string): Product[] {
     p.description.toLowerCase().includes(lowerQuery) ||
     p.tags.some(t => t.toLowerCase().includes(lowerQuery))
   );
+}
+
+export function getMockProductsByMood(mood: string): Product[] {
+  return mockProducts.filter(p => p.mood?.includes(mood.toLowerCase()));
 }

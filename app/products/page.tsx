@@ -61,12 +61,12 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   return (
     <div className="min-h-screen bg-background">
       {/* Page Header */}
-      <div className="bg-cream py-12">
+      <div className="bg-surface py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl font-bold font-heading text-primary">
+          <h1 className="text-3xl md:text-4xl font-bold font-heading text-primary uppercase tracking-wide">
             All Products
           </h1>
-          <p className="mt-2 text-brown-light">
+          <p className="mt-2 text-muted">
             Discover our complete range of healthy, delicious snacks
           </p>
         </div>
@@ -89,7 +89,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           <main className="flex-1">
             {/* Results count */}
             <div className="mb-6 flex items-center justify-between">
-              <p className="text-brown-light">
+              <p className="text-muted">
                 Showing {products.length} product{products.length !== 1 ? 's' : ''}
               </p>
             </div>
@@ -99,7 +99,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             ) : (
               <div className="text-center py-16">
                 <p className="text-primary font-medium mb-2">No products found</p>
-                <p className="text-brown-light text-sm">
+                <p className="text-muted text-sm">
                   Try adjusting your filters or browse all products
                 </p>
               </div>
