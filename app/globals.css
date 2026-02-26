@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  /* NutriBites Brand Colors */
+  --background: #FFFFFF;
+  --foreground: #333333;
+  --primary: #2D5A4A;          /* Deep Forest Green */
+  --primary-dark: #1e3d32;     /* Darker green for hover */
+  --primary-light: #3d7a64;    /* Lighter green */
+  --accent: #E87B35;           /* Warm Orange */
+  --accent-light: #f59e5c;     /* Lighter orange for hover */
+  --cream: #F5E6D3;            /* Cream/Beige */
+  --cream-light: #faf3eb;      /* Lighter cream */
+  --brown-light: #8b7355;      /* Muted brown for secondary text */
+
+  /* Scheme colors for sections */
+  --scheme-dark-bg: #2D5A4A;
+  --scheme-dark-text: #FFFFFF;
+  --scheme-accent-bg: #F5E6D3;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-cream: var(--cream);
+  --color-cream-light: var(--cream-light);
+  --color-brown-light: var(--brown-light);
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brown-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
