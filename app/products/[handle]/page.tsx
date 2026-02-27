@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getProductByHandle, getProducts, isShopifyConfigured } from '@/lib/shopify';
+import { getProductByHandle, getProducts, isShopifyConfigured, Product } from '@/lib/shopify';
 import { getMockProductByHandle, getMockProducts } from '@/lib/mock-data';
 import { ProductInfo } from '@/components/product/ProductInfo';
 import { ProductGrid } from '@/components/product/ProductGrid';
@@ -67,7 +67,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
 
   // Get related products (same tags)
-  let allProducts = [];
+  let allProducts: Product[] = [];
   if (isShopifyConfigured()) {
     allProducts = await getProducts();
   }
