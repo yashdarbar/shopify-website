@@ -5,8 +5,8 @@ import { TrustBadges } from '@/components/cms/TrustBadges';
 import { Leaf, Users, Award, Heart } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Our Story | NutriBites',
-  description: 'Learn about NutriBites - our mission to make healthy snacking delicious. 100% natural ingredients, no preservatives, made with love.',
+  title: 'Our Story | Welwach',
+  description: 'Learn about Welwach - our mission to make healthy snacking delicious. 100% natural ingredients, no preservatives, made with love.',
 };
 
 const promises = [
@@ -55,7 +55,7 @@ export default function AboutPage() {
             Our Story
           </h1>
           <p className="mt-4 text-xl text-white/80 max-w-2xl mx-auto">
-            At NutriBites, we believe healthy eating shouldn't mean compromising on taste.
+            At Welwach, we believe healthy eating shouldn't mean compromising on taste.
           </p>
         </div>
       </div>
@@ -72,7 +72,7 @@ export default function AboutPage() {
           </p>
 
           <p className="text-muted">
-            From protein-packed power balls for fitness enthusiasts to traditional Indian sweets reimagined with natural sweeteners, every NutriBites product is a labor of love. We source our ingredients from trusted Indian farms, ensuring freshness and supporting local communities.
+            From protein-packed power balls for fitness enthusiasts to traditional Indian sweets reimagined with natural sweeteners, every Welwach product is a labor of love. We source our ingredients from trusted Indian farms, ensuring freshness and supporting local communities.
           </p>
         </div>
 
@@ -121,24 +121,6 @@ export default function AboutPage() {
 
       {/* Trust Badges */}
       <TrustBadges badges={trustBadges} />
-
-      {/* CTA Section */}
-      <div className="bg-primary text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold font-heading mb-4">
-            Ready to Snack Smarter?
-          </h2>
-          <p className="text-white/80 mb-8">
-            Join over 50,000+ happy snackers who've made the switch to healthier snacking.
-          </p>
-          <a
-            href="/products"
-            className="inline-block px-8 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-accent-light transition-colors"
-          >
-            Shop Now
-          </a>
-        </div>
-      </div>
     </div>
   );
 }

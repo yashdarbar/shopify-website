@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -14,6 +14,11 @@ interface HeroSectionProps {
 export function HeroSection({ banners }: HeroSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const lastWheelTime = useRef(0);
+
+  const minSwipeDistance = 50;
 
   // Auto-advance slides
   useEffect(() => {
@@ -45,6 +50,37 @@ export function HeroSection({ banners }: HeroSectionProps) {
     setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
+  // Touch handlers for swipe gestures
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (Math.abs(distance) > minSwipeDistance) {
+      distance > 0 ? goToNext() : goToPrevious();
+    }
+  };
+
+  // Wheel handler for trackpad swipes
+  const onWheel = (e: React.WheelEvent) => {
+    const now = Date.now();
+    // Debounce to prevent too many rapid changes
+    if (now - lastWheelTime.current < 500) return;
+
+    // Detect horizontal scroll (trackpad)
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 30) {
+      lastWheelTime.current = now;
+      e.deltaX > 0 ? goToNext() : goToPrevious();
+    }
+  };
+
   if (banners.length === 0) {
     return <FallbackHero />;
   }
@@ -53,9 +89,15 @@ export function HeroSection({ banners }: HeroSectionProps) {
   const isLightText = currentBanner.textColor === 'light';
 
   return (
-    <section className="relative overflow-hidden">
+    <section
+      className="relative overflow-hidden"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+      onWheel={onWheel}
+    >
       {/* Banner slides */}
-      <div className="relative h-[500px] md:h-[600px] lg:h-[650px]">
+      <div className="relative h-[600px] md:h-[700px] lg:h-[750px]">
         {banners.map((banner, index) => (
           <div
             key={banner.id}
@@ -164,7 +206,7 @@ function FallbackHero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="text-center max-w-2xl mx-auto">
           <span className="inline-block px-4 py-1 bg-accent/10 text-accent text-sm font-semibold rounded-full mb-4">
-            Welcome to NutriBites
+            Welcome to Welwach
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-primary leading-tight uppercase tracking-wide">
             Healthy Never Tasted

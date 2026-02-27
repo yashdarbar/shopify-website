@@ -5,8 +5,8 @@ import { FAQAccordion } from '@/components/FAQAccordion';
 import { MessageCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'FAQs | NutriBites',
-  description: 'Find answers to frequently asked questions about NutriBites products, shipping, returns, and more.',
+  title: 'FAQs | Welwach',
+  description: 'Find answers to frequently asked questions about Welwach products, shipping, returns, and more.',
 };
 
 export default function FAQPage() {

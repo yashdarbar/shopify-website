@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* NutriBites Brand Colors - Snackible-Inspired Modern Theme */
+  /* Welwach Brand Colors - Snackible-Inspired Modern Theme */
   --background: #FFFFFF;
   --foreground: #1A1A1A;
 
@@ -93,4 +93,14 @@ body {
 
 .animate-marquee {
   animation: marquee 20s linear infinite;
+}
+
+/* Hide scrollbar for carousels */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

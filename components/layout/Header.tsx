@@ -47,8 +47,8 @@ export function Header() {
 
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <span className="text-2xl font-bold font-heading text-white tracking-wide">
-              NUTRI<span className="text-accent">BITES</span>
+            <span className="text-2xl font-bold font-heading text-accent tracking-wide">
+              WELWACH
             </span>
           </Link>
 
@@ -75,16 +75,18 @@ export function Header() {
                   )}
                 </Link>
                 {item.dropdown && openDropdown === item.name && (
-                  <div className="absolute top-full left-0 mt-2 w-56 bg-primary rounded-md shadow-xl border border-white/10 py-2 z-50">
-                    {item.dropdown.map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        href={subItem.href}
-                        className="block px-4 py-2.5 text-sm text-white/80 hover:bg-white/10 hover:text-accent transition-colors"
-                      >
-                        {subItem.name}
-                      </Link>
-                    ))}
+                  <div className="absolute top-full left-0 pt-2 z-50">
+                    <div className="w-56 bg-primary rounded-md shadow-xl border border-white/10 py-2">
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="block px-4 py-2.5 text-sm text-white/80 hover:bg-white/10 hover:text-accent transition-colors"
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

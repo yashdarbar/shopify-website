@@ -120,3 +120,18 @@ export type Collection = Omit<ShopifyCollection, 'products'> & {
 
 export type CartItem = ShopifyCartItem;
 export type Cart = ShopifyCart;
+
+// Metaobject Types
+export interface ShopifyMetaobjectField {
+  key: string;
+  value: string | null;
+  reference?: {
+    image?: { url: string };
+  } | null;
+}
+
+export interface ShopifyMetaobject {
+  id: string;
+  handle: string;
+  fields: ShopifyMetaobjectField[];
+}

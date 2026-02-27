@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { Testimonial } from '@/lib/mock-data/site-content';
 
@@ -10,6 +10,11 @@ interface TestimonialsProps {
 
 export function Testimonials({ testimonials }: TestimonialsProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const lastWheelTime = useRef(0);
+
+  const minSwipeDistance = 50;
 
   if (testimonials.length === 0) {
     return null;
@@ -21,6 +26,37 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  // Touch handlers for swipe gestures
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (Math.abs(distance) > minSwipeDistance) {
+      distance > 0 ? goToNext() : goToPrevious();
+    }
+  };
+
+  // Wheel handler for trackpad swipes
+  const onWheel = (e: React.WheelEvent) => {
+    const now = Date.now();
+    // Debounce to prevent too many rapid changes
+    if (now - lastWheelTime.current < 500) return;
+
+    // Detect horizontal scroll (trackpad)
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 30) {
+      lastWheelTime.current = now;
+      e.deltaX > 0 ? goToNext() : goToPrevious();
+    }
   };
 
   // Show 3 testimonials at a time on desktop, 1 on mobile
@@ -47,7 +83,13 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
         </div>
 
         {/* Testimonials Carousel */}
-        <div className="relative">
+        <div
+          className="relative"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          onWheel={onWheel}
+        >
           {/* Mobile View - Single testimonial */}
           <div className="md:hidden">
             <TestimonialCard testimonial={testimonials[currentIndex]} />

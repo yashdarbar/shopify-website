@@ -13,6 +13,7 @@ import {
   getMockFeaturedCollections,
   getMockMoodCategories,
 } from '@/lib/mock-data';
+import { getHeroBanners, isShopifyConfigured } from '@/lib/shopify';
 
 // Loading skeleton for products
 function ProductsSkeleton() {
@@ -40,9 +41,25 @@ function ProductsSkeleton() {
   );
 }
 
-export default function HomePage() {
-  // Get CMS data
-  const heroBanners = getMockHeroBanners();
+export default async function HomePage() {
+  // Get hero banners from Shopify (with fallback to mock data)
+  let heroBanners;
+  if (isShopifyConfigured()) {
+    try {
+      heroBanners = await getHeroBanners();
+      // Fallback to mock data if no active banners from Shopify
+      if (heroBanners.length === 0) {
+        heroBanners = getMockHeroBanners();
+      }
+    } catch (error) {
+      console.error('Error fetching hero banners from Shopify:', error);
+      heroBanners = getMockHeroBanners();
+    }
+  } else {
+    heroBanners = getMockHeroBanners();
+  }
+
+  // Get other CMS data (still using mock data)
   const trustBadges = getMockTrustBadges();
   const testimonials = getMockTestimonials(true);
   const featuredCollections = getMockFeaturedCollections(6);

@@ -19,6 +19,7 @@ export interface TrustBadge {
   title: string;
   icon: string; // Lucide icon name
   description: string;
+  imageUrl: string; // Background image URL
   order: number;
 }
 
@@ -77,7 +78,7 @@ export interface NewsletterSettings {
 // Mock Data
 
 export const mockSiteSettings: SiteSettings = {
-  siteName: 'NutriBites',
+  siteName: 'Welwach',
   tagline: 'Snack Smart, Live Better',
   announcementBarText: 'Free Shipping on orders above Rs. 499 | Use code FIRST10 for 10% off',
   announcementBarEnabled: true,
@@ -128,6 +129,7 @@ export const mockTrustBadges: TrustBadge[] = [
     title: '100% Natural',
     icon: 'Leaf',
     description: 'Made with pure, natural ingredients',
+    imageUrl: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop',
     order: 1,
   },
   {
@@ -135,6 +137,7 @@ export const mockTrustBadges: TrustBadge[] = [
     title: 'No Preservatives',
     icon: 'ShieldCheck',
     description: 'Free from artificial preservatives',
+    imageUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=400&fit=crop',
     order: 2,
   },
   {
@@ -142,6 +145,7 @@ export const mockTrustBadges: TrustBadge[] = [
     title: 'Vegan Options',
     icon: 'Sprout',
     description: 'Plant-based choices available',
+    imageUrl: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&h=400&fit=crop',
     order: 3,
   },
   {
@@ -149,6 +153,7 @@ export const mockTrustBadges: TrustBadge[] = [
     title: 'High Protein',
     icon: 'Dumbbell',
     description: 'Protein-packed for fitness',
+    imageUrl: 'https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=600&h=400&fit=crop',
     order: 4,
   },
 ];
@@ -226,7 +231,7 @@ export const mockFAQItems: FAQItem[] = [
   {
     id: '4',
     question: 'What is your return policy?',
-    answer: 'We accept returns within 7 days of delivery for unopened products. Contact us at hello@nutribites.com for assistance.',
+    answer: 'We accept returns within 7 days of delivery for unopened products. Contact us at hello@welwach.com for assistance.',
     category: 'Shipping',
     order: 4,
   },
@@ -250,7 +255,7 @@ export const mockPageContent: Record<string, PageContent> = {
   about_us: {
     pageIdentifier: 'about_us',
     headline: 'Our Story',
-    content: `At NutriBites, we believe healthy eating shouldn't mean compromising on taste.
+    content: `At Welwach, we believe healthy eating shouldn't mean compromising on taste.
 
 Founded in 2023, we started with a simple mission: create snacks that are as delicious as they are nutritious. Every product is crafted with 100% natural ingredients, no preservatives, and no added sugar.
 
@@ -272,16 +277,16 @@ Join over 50,000+ happy snackers who've made the switch to smarter snacking.`,
 };
 
 export const mockContactInfo: ContactInfo = {
-  email: 'hello@nutribites.com',
+  email: 'hello@welwach.com',
   phone: '+91 98765 43210',
   whatsapp: '+91 98765 43210',
-  addressLine1: 'NutriBites Foods Pvt. Ltd.',
+  addressLine1: 'Welwach Foods Pvt. Ltd.',
   addressLine2: '123, Health Street, Andheri West, Mumbai - 400058, Maharashtra',
   businessHours: 'Monday - Saturday: 9 AM - 6 PM\nSunday: Closed',
 };
 
 export const mockNewsletterSettings: NewsletterSettings = {
-  headline: 'Join the NutriBites Family',
+  headline: 'Join the Welwach Family',
   subtext: 'Get 10% off your first order + exclusive recipes',
   buttonText: 'Subscribe',
   successMessage: "Thanks for subscribing! Check your email for your discount code.",
@@ -297,35 +302,53 @@ export interface MoodCategory {
   color: string;
 }
 
-// Shop by Mood categories
+// Shop by Mood categories (Mix of Taste + Occasion)
 export const mockMoodCategories: MoodCategory[] = [
+  // Taste-based moods
   {
-    id: 'energy',
-    name: 'Energy Boost',
-    icon: 'Zap',
-    description: 'Power through your day',
-    slug: 'energy',
-    color: '#F59E0B',
-  },
-  {
-    id: 'fitness',
-    name: 'Fitness Fuel',
-    icon: 'Dumbbell',
-    description: 'Pre & post workout snacks',
-    slug: 'fitness',
+    id: 'spicy',
+    name: 'Spicy',
+    icon: 'Flame',
+    description: 'Bold & fiery flavors',
+    slug: 'spicy',
     color: '#EF4444',
   },
   {
-    id: 'wellness',
-    name: 'Wellness',
-    icon: 'Heart',
-    description: 'Nourish your body',
-    slug: 'wellness',
+    id: 'sweet',
+    name: 'Sweet',
+    icon: 'Candy',
+    description: 'Guilt-free sweetness',
+    slug: 'sweet',
     color: '#EC4899',
   },
   {
+    id: 'cheesy',
+    name: 'Cheesy',
+    icon: 'Pizza',
+    description: 'Cheesy goodness',
+    slug: 'cheesy',
+    color: '#F59E0B',
+  },
+  {
+    id: 'tangy',
+    name: 'Tangy',
+    icon: 'Citrus',
+    description: 'Zesty & refreshing',
+    slug: 'tangy',
+    color: '#84CC16',
+  },
+  // Occasion-based moods
+  {
+    id: 'fitness',
+    name: 'Fitness',
+    icon: 'Dumbbell',
+    description: 'Pre & post workout',
+    slug: 'fitness',
+    color: '#3B82F6',
+  },
+  {
     id: 'party',
-    name: 'Party Time',
+    name: 'Party',
     icon: 'PartyPopper',
     description: 'Guilt-free party snacks',
     slug: 'party',
@@ -333,15 +356,15 @@ export const mockMoodCategories: MoodCategory[] = [
   },
   {
     id: 'work',
-    name: 'Work From Home',
-    icon: 'Laptop',
+    name: 'Work Snacks',
+    icon: 'Coffee',
     description: 'Desk-friendly munchies',
     slug: 'work',
-    color: '#3B82F6',
+    color: '#6B7280',
   },
   {
     id: 'kids',
-    name: 'Kids Favorites',
+    name: 'Kids',
     icon: 'Smile',
     description: 'Healthy treats kids love',
     slug: 'kids',

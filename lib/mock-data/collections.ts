@@ -1,4 +1,4 @@
-// Mock collection data based on NutriBites demo data
+// Mock collection data based on Welwach demo data
 
 import { Collection } from '@/lib/shopify/types';
 import { mockProducts } from './products';

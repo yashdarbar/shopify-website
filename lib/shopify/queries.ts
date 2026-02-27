@@ -278,3 +278,28 @@ export const SEARCH_PRODUCTS_QUERY = `
   }
   ${PRODUCT_FRAGMENT}
 `;
+
+// Metaobjects Queries
+export const GET_HERO_BANNERS_QUERY = `
+  query GetHeroBanners {
+    metaobjects(type: "hero_banner", first: 10) {
+      edges {
+        node {
+          id
+          handle
+          fields {
+            key
+            value
+            reference {
+              ... on MediaImage {
+                image {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;

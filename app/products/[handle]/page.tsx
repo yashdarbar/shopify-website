@@ -26,12 +26,12 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
   if (!product) {
     return {
-      title: 'Product Not Found | NutriBites',
+      title: 'Product Not Found | Welwach',
     };
   }
 
   return {
-    title: `${product.title} | NutriBites`,
+    title: `${product.title} | Welwach`,
     description: product.description,
     openGraph: {
       title: product.title,

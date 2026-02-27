@@ -1,4 +1,4 @@
-// Mock product data based on NutriBites demo data
+// Mock product data based on Welwach demo data
 // This mirrors Shopify Storefront API structure for easy transition later
 
 import { Product } from '@/lib/shopify/types';
@@ -82,7 +82,7 @@ function createMockProduct(
   };
 }
 
-// All 15 products from NutriBites demo data
+// All 15 products from Welwach demo data
 export const mockProducts: Product[] = [
   // Category: Protein Snacks
   createMockProduct(
@@ -291,8 +291,8 @@ export const mockProducts: Product[] = [
   // Category: Gift Hampers
   createMockProduct(
     '13',
-    'nutribites-starter-box',
-    'NutriBites Starter Box',
+    'welwach-starter-box',
+    'Welwach Starter Box',
     'Perfect introduction to healthy snacking. Contains 5 bestselling products: Protein Balls, Ragi Chips, Makhana, Trail Mix, and Date Laddoo.',
     '799',
     '999',

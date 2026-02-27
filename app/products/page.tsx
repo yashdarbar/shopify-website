@@ -1,10 +1,12 @@
 import { Metadata } from 'next';
+import { getProducts, isShopifyConfigured } from '@/lib/shopify';
 import { getMockProducts, getMockProductsByTag } from '@/lib/mock-data';
 import { ProductGrid } from '@/components/product/ProductGrid';
 import { ProductFilters } from '@/components/product/ProductFilters';
+import { Product } from '@/lib/shopify/types';
 
 export const metadata: Metadata = {
-  title: 'All Products | NutriBites',
+  title: 'All Products | Welwach',
   description: 'Browse our complete collection of healthy snacks. Protein snacks, millet munchies, guilt-free sweets, and more.',
 };
 
@@ -19,10 +21,25 @@ interface ProductsPageProps {
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
   const params = await searchParams;
-  let products = getMockProducts();
 
-  // Filter by tag if provided
-  if (params.tag) {
+  // Fetch products from Shopify or fallback to mock data
+  let products: Product[] = [];
+
+  if (isShopifyConfigured()) {
+    try {
+      products = await getProducts();
+      console.log(`✓ Fetched ${products.length} products from Shopify`);
+    } catch (error) {
+      console.error('Failed to fetch from Shopify, using mock data:', error);
+      products = getMockProducts();
+    }
+  } else {
+    console.log('Shopify not configured, using mock data');
+    products = getMockProducts();
+  }
+
+  // Filter by tag if provided (only works with mock data for now)
+  if (params.tag && !isShopifyConfigured()) {
     products = getMockProductsByTag(params.tag);
   }
 

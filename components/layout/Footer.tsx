@@ -25,10 +25,10 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/nutribites_official' },
-  { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/nutribitesofficial' },
-  { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/nutribites' },
-  { name: 'YouTube', icon: Youtube, href: 'https://youtube.com/NutriBitesIndia' },
+  { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/welwach_official' },
+  { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/welwachofficial' },
+  { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/welwach' },
+  { name: 'YouTube', icon: Youtube, href: 'https://youtube.com/WelwachIndia' },
 ];
 
 export function Footer() {
@@ -39,7 +39,7 @@ export function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
             <h3 className="text-2xl font-bold font-heading mb-2 uppercase tracking-wide">
-              Join the NutriBites Family
+              Join the Welwach Family
             </h3>
             <p className="text-white/90 mb-6">
               Get 10% off your first order + exclusive recipes and health tips
@@ -65,8 +65,8 @@ export function Footer() {
             {/* Brand */}
             <div className="col-span-2 md:col-span-1">
               <Link href="/" className="inline-block">
-                <span className="text-2xl font-bold font-heading tracking-wide">
-                  NUTRI<span className="text-accent">BITES</span>
+                <span className="text-2xl font-bold font-heading text-accent tracking-wide">
+                  WELWACH
                 </span>
               </Link>
               <p className="mt-2 text-sm text-white/60 italic">Snack Smart, Live Better</p>
@@ -145,9 +145,9 @@ export function Footer() {
           <div className="mt-12 pt-8 border-t border-white/10">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 text-sm text-white/60">
-                <a href="mailto:hello@nutribites.com" className="flex items-center gap-2 hover:text-accent transition-colors">
+                <a href="mailto:hello@welwach.com" className="flex items-center gap-2 hover:text-accent transition-colors">
                   <Mail className="h-4 w-4" />
-                  hello@nutribites.com
+                  hello@welwach.com
                 </a>
                 <a href="tel:+919876543210" className="flex items-center gap-2 hover:text-accent transition-colors">
                   <Phone className="h-4 w-4" />
@@ -155,7 +155,7 @@ export function Footer() {
                 </a>
               </div>
               <p className="text-sm text-white/40">
-                © {new Date().getFullYear()} NutriBites Foods Pvt. Ltd. All rights reserved.
+                © {new Date().getFullYear()} Welwach Foods Pvt. Ltd. All rights reserved.
               </p>
             </div>
             {/* Payment Methods */}

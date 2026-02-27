@@ -11,8 +11,10 @@ import {
   UPDATE_CART_MUTATION,
   REMOVE_FROM_CART_MUTATION,
   SEARCH_PRODUCTS_QUERY,
+  GET_HERO_BANNERS_QUERY,
 } from './queries';
-import type { ShopifyProduct, ShopifyCollection, ShopifyCart, Product, Collection, Cart } from './types';
+import type { ShopifyProduct, ShopifyCollection, ShopifyCart, Product, Collection, Cart, ShopifyMetaobject } from './types';
+import type { HeroBanner } from '@/lib/mock-data/site-content';
 
 // Transform Shopify product to simplified format
 function reshapeProduct(product: ShopifyProduct): Product {
@@ -142,6 +144,50 @@ export async function removeFromCart(cartId: string, lineIds: string[]): Promise
   });
 
   return data.cartLinesRemove.cart;
+}
+
+// Metaobject APIs
+
+// Helper to get field value from metaobject
+function getMetaobjectField(metaobject: ShopifyMetaobject, key: string): string {
+  const field = metaobject.fields.find((f) => f.key === key);
+  return field?.value || '';
+}
+
+// Helper to get image URL from metaobject field reference
+function getMetaobjectImageUrl(metaobject: ShopifyMetaobject, key: string): string {
+  const field = metaobject.fields.find((f) => f.key === key);
+  return field?.reference?.image?.url || '';
+}
+
+// Transform Shopify metaobject to HeroBanner
+function reshapeHeroBanner(metaobject: ShopifyMetaobject): HeroBanner {
+  return {
+    id: metaobject.id,
+    headline: getMetaobjectField(metaobject, 'headline'),
+    subtext: getMetaobjectField(metaobject, 'subtext'),
+    buttonText: getMetaobjectField(metaobject, 'button_text'),
+    buttonLink: getMetaobjectField(metaobject, 'button_link'),
+    backgroundImage: getMetaobjectImageUrl(metaobject, 'background_image'),
+    backgroundColor: getMetaobjectField(metaobject, 'background_color') || '#2D5A3D',
+    textColor: (getMetaobjectField(metaobject, 'text_color') as 'light' | 'dark') || 'light',
+    order: parseInt(getMetaobjectField(metaobject, 'display_order') || '0', 10),
+    isActive: getMetaobjectField(metaobject, 'is_active') === 'true',
+  };
+}
+
+export async function getHeroBanners(): Promise<HeroBanner[]> {
+  const data = await shopifyFetch<{ metaobjects: { edges: { node: ShopifyMetaobject }[] } }>({
+    query: GET_HERO_BANNERS_QUERY,
+    tags: ['hero-banners'],
+  });
+
+  const banners = removeEdgesAndNodes(data.metaobjects).map(reshapeHeroBanner);
+
+  // Filter active banners and sort by order
+  return banners
+    .filter((banner) => banner.isActive)
+    .sort((a, b) => a.order - b.order);
 }
 
 // Re-export utilities

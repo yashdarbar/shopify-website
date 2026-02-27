@@ -4,8 +4,8 @@ import { ContactForm } from '@/components/ContactForm';
 import { Mail, Phone, MapPin, Clock, MessageCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | NutriBites',
-  description: 'Get in touch with NutriBites. We\'re here to help with your orders, product questions, or feedback.',
+  title: 'Contact Us | Welwach',
+  description: 'Get in touch with Welwach. We\'re here to help with your orders, product questions, or feedback.',
 };
 
 export default function ContactPage() {

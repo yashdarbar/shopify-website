@@ -25,12 +25,12 @@ export async function generateMetadata({ params }: CollectionPageProps): Promise
 
   if (!collection) {
     return {
-      title: 'Collection Not Found | NutriBites',
+      title: 'Collection Not Found | Welwach',
     };
   }
 
   return {
-    title: `${collection.title} | NutriBites`,
+    title: `${collection.title} | Welwach`,
     description: collection.description,
     openGraph: {
       title: collection.title,

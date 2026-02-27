@@ -24,9 +24,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'NutriBites | Snack Smart, Live Better',
+  title: 'Welwach | Snack Smart, Live Better',
   description: 'Discover healthy, delicious snacks made with 100% natural ingredients. No preservatives, no added sugar. Protein snacks, millet munchies, guilt-free sweets & more.',
-  keywords: ['healthy snacks', 'protein snacks', 'millet snacks', 'no sugar', 'natural ingredients', 'NutriBites'],
+  keywords: ['healthy snacks', 'protein snacks', 'millet snacks', 'no sugar', 'natural ingredients', 'Welwach'],
 };
 
 export default function RootLayout({
