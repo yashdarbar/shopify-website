@@ -6,7 +6,7 @@ import { getProductByHandle, getProducts, isShopifyConfigured, Product } from '@
 import { getMockProductByHandle, getMockProducts } from '@/lib/mock-data';
 import { ProductInfo } from '@/components/product/ProductInfo';
 import { ProductGrid } from '@/components/product/ProductGrid';
-import { ArrowLeft } from 'lucide-react';
+import { BackButton } from '@/components/ui/BackButton';
 
 interface ProductPageProps {
   params: Promise<{ handle: string }>;
@@ -87,13 +87,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       {/* Breadcrumb */}
       <div className="bg-surface py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/products"
-            className="flex items-center gap-2 text-muted hover:text-primary transition-colors text-sm"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Products
-          </Link>
+          <BackButton />
         </div>
       </div>
 
