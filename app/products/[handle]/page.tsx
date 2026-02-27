@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getProductByHandle, getProducts, isShopifyConfigured } from '@/lib/shopify';
 import { getMockProductByHandle, getMockProducts } from '@/lib/mock-data';
 import { ProductInfo } from '@/components/product/ProductInfo';
 import { ProductGrid } from '@/components/product/ProductGrid';
@@ -22,7 +23,15 @@ export async function generateStaticParams() {
 // Generate metadata for SEO
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { handle } = await params;
-  const product = getMockProductByHandle(handle);
+
+  // Try Shopify first, then mock data
+  let product = null;
+  if (isShopifyConfigured()) {
+    product = await getProductByHandle(handle);
+  }
+  if (!product) {
+    product = getMockProductByHandle(handle);
+  }
 
   if (!product) {
     return {
@@ -43,14 +52,28 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { handle } = await params;
-  const product = getMockProductByHandle(handle);
+
+  // Try Shopify first, then mock data
+  let product = null;
+  if (isShopifyConfigured()) {
+    product = await getProductByHandle(handle);
+  }
+  if (!product) {
+    product = getMockProductByHandle(handle);
+  }
 
   if (!product) {
     notFound();
   }
 
   // Get related products (same tags)
-  const allProducts = getMockProducts();
+  let allProducts = [];
+  if (isShopifyConfigured()) {
+    allProducts = await getProducts();
+  }
+  if (allProducts.length === 0) {
+    allProducts = getMockProducts();
+  }
   const relatedProducts = allProducts
     .filter(
       (p) =>
